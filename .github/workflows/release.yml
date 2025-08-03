@@ -41,7 +41,6 @@ jobs:
           sed -i -e "s/\"version\": \"0.0.0\"/\"version\": \"$version\"/g" package.json
           cat package.json
           pnpm install
-          pnpm i18n:build
           pnpm build
           cd ..
 
