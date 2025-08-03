@@ -72,18 +72,18 @@ const Header = () => {
         </HStack>
         <HStack spacing="$1">
           <Button
-              aria-label="manage.sidemenu.profile"
-              loading={logOutReqLoading()}
-              onClick={() => to("/@manage/profile")}
-              size="sm"
+            aria-label="manage.sidemenu.profile"
+            loading={logOutReqLoading()}
+            onClick={() => to("/@manage/profile")}
+            size="sm"
           >
             <i class="mdi mdi-account"></i>
           </Button>
           <Button
-              aria-label="logout"
-              loading={logOutReqLoading()}
-              onClick={logOut}
-              size="sm"
+            aria-label="logout"
+            loading={logOutReqLoading()}
+            onClick={logOut}
+            size="sm"
           >
             <i class="mdi mdi-logout"></i>
           </Button>

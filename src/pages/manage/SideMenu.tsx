@@ -75,7 +75,6 @@ const SideMenuItemWithTo = (props: SideMenuItemProps) => {
       // _active={{ transform: "scale(.95)", transition: "0.1s" }}
     >
       <Show when={props.icon}>
-
         <Box
           as="i"
           class={`mdi ${props.icon}`}
