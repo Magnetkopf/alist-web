@@ -11,11 +11,9 @@ import {
   Flex,
   Heading,
   HStack,
-  IconButton,
+  Button,
   useColorModeValue,
 } from "@hope-ui/solid"
-import { TiThMenu } from "solid-icons/ti"
-import { IoExit } from "solid-icons/io"
 import { SwitchColorMode, SwitchLanguageWhite } from "~/components"
 import { useFetch, useRouter, useT } from "~/hooks"
 import { SideMenu } from "./SideMenu"
@@ -53,13 +51,14 @@ const Header = () => {
     >
       <Flex alignItems="center" justifyContent="space-between" h="$full">
         <HStack spacing="$2">
-          <IconButton
+          <Button
             aria-label="menu"
-            icon={<TiThMenu />}
             display={{ "@sm": "none" }}
             onClick={onOpen}
             size="sm"
-          />
+          >
+            <i class="mdi mdi-menu"></i>
+          </Button>
           <Heading
             fontSize="$xl"
             color="$info9"
@@ -72,13 +71,22 @@ const Header = () => {
           </Heading>
         </HStack>
         <HStack spacing="$1">
-          <IconButton
-            aria-label="logout"
-            icon={<IoExit />}
-            loading={logOutReqLoading()}
-            onClick={logOut}
-            size="sm"
-          />
+          <Button
+              aria-label="manage.sidemenu.profile"
+              loading={logOutReqLoading()}
+              onClick={() => to("/@manage/profile")}
+              size="sm"
+          >
+            <i class="mdi mdi-account"></i>
+          </Button>
+          <Button
+              aria-label="logout"
+              loading={logOutReqLoading()}
+              onClick={logOut}
+              size="sm"
+          >
+            <i class="mdi mdi-logout"></i>
+          </Button>
         </HStack>
       </Flex>
       <Drawer opened={isOpen()} placement="left" onClose={onClose}>

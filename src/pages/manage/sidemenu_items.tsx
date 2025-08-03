@@ -1,30 +1,6 @@
 import { SideMenuItemProps } from "./SideMenu"
-import {
-  BsGearFill,
-  BsPaletteFill,
-  BsCameraFill,
-  BsWindow,
-  BsPersonCircle,
-  BsJoystick,
-  BsMedium,
-  BsFingerprint,
-  BsFront,
-  BsCloudUploadFill,
-  BsSearch,
-  BsBucket,
-  BsHddNetwork,
-  BsArrowLeftRight,
-  BsBoxFill,
-} from "solid-icons/bs"
-import { FiLogIn } from "solid-icons/fi"
-import { CgDatabase } from "solid-icons/cg"
-import { IoCopy, IoHome, IoMagnetOutline } from "solid-icons/io"
 import { Component, lazy } from "solid-js"
 import { Group, UserRole } from "~/types"
-import { FaSolidBook, FaSolidDatabase } from "solid-icons/fa"
-import { TbArchive } from "solid-icons/tb"
-import { BiRegularTask } from "solid-icons/bi"
-import { BiSolidDashboard } from "solid-icons/bi"
 
 export type SideMenuItem = SideMenuItemProps & {
   component?: Component
@@ -36,126 +12,119 @@ const CommonSettings = lazy(() => import("./settings/Common"))
 export const side_menu_items: SideMenuItem[] = [
   {
     title: "manage.sidemenu.dashboard",
-    icon: BiSolidDashboard,
+    icon: "mdi-view-dashboard",
     to: "/@manage",
     component: () => lazy(() => import("./Dashboard")),
   },
   {
     title: "manage.sidemenu.settings",
-    icon: BsGearFill,
+    icon: "mdi-cog",
     to: "/@manage/settings",
     children: [
       {
         title: "manage.sidemenu.site",
-        icon: BsWindow,
+        icon: "mdi-cog-outline",
         to: "/@manage/settings/site",
         component: () => <CommonSettings group={Group.SITE} />,
       },
       {
         title: "manage.sidemenu.style",
-        icon: BsPaletteFill,
+        icon: "mdi-palette-outline",
         to: "/@manage/settings/style",
         component: () => <CommonSettings group={Group.STYLE} />,
       },
       {
         title: "manage.sidemenu.preview",
-        icon: BsCameraFill,
+        icon: "mdi-play-circle-outline",
         to: "/@manage/settings/preview",
         component: () => <CommonSettings group={Group.PREVIEW} />,
       },
       {
         title: "manage.sidemenu.global",
-        icon: BsJoystick,
+        icon: "mdi-earth",
         to: "/@manage/settings/global",
         component: () => <CommonSettings group={Group.GLOBAL} />,
       },
       {
         title: "manage.sidemenu.sso",
-        icon: FiLogIn,
+        icon: "mdi-account-key-outline",
         to: "/@manage/settings/sso",
         component: () => <CommonSettings group={Group.SSO} />,
       },
       {
         title: "manage.sidemenu.ldap",
-        icon: FiLogIn,
+        icon: "mdi-account-key-outline",
         to: "/@manage/settings/ldap",
         component: () => <CommonSettings group={Group.LDAP} />,
       },
       {
         title: "manage.sidemenu.s3",
-        icon: BsBucket,
+        icon: "mdi-bucket-outline",
         to: "/@manage/settings/s3",
         component: lazy(() => import("./settings/S3")),
       },
       {
         title: "manage.sidemenu.ftp",
-        icon: BsHddNetwork,
+        icon: "mdi-folder-outline",
         to: "/@manage/settings/ftp",
         component: () => <CommonSettings group={Group.FTP} />,
       },
       {
         title: "manage.sidemenu.traffic",
-        icon: BsArrowLeftRight,
+        icon: "mdi-arrow-left-right",
         to: "/@manage/settings/traffic",
         component: () => <CommonSettings group={Group.TRAFFIC} />,
       },
       {
         title: "manage.sidemenu.other",
-        icon: BsMedium,
+        icon: "mdi-dots-horizontal",
         to: "/@manage/settings/other",
         component: lazy(() => import("./settings/Other")),
       },
     ],
   },
   {
-    title: "manage.sidemenu.profile",
-    icon: BsFingerprint,
-    to: "/@manage/profile",
-    role: UserRole.GUEST,
-    component: lazy(() => import("./users/Profile")),
-  },
-  {
     title: "manage.sidemenu.tasks",
-    icon: BiRegularTask,
+    icon: "mdi-checkbox-marked-circle",
     to: "/@manage/tasks",
     role: UserRole.GENERAL,
     children: [
       {
         title: "manage.sidemenu.offline_download",
-        icon: IoMagnetOutline,
+        icon: "mdi-magnet",
         to: "/@manage/tasks/offline_download",
         role: UserRole.GENERAL,
         component: lazy(() => import("./tasks/offline_download")),
       },
       // {
       //   title: "manage.sidemenu.aria2",
-      //   icon: BsCloudArrowDownFill,
+      //   icon: "mdi-cloud-download",
       //   to: "/@manage/tasks/aria2",
       //   component: lazy(() => import("./tasks/Aria2")),
       // },
       // {
       //   title: "manage.sidemenu.qbit",
-      //   icon: FaBrandsQuinscape,
+      //   icon: "mdi-cloud-download",
       //   to: "/@manage/tasks/qbit",
       //   component: lazy(() => import("./tasks/Qbit")),
       // },
       {
         title: "manage.sidemenu.upload",
-        icon: BsCloudUploadFill,
+        icon: "mdi-cloud-upload-outline",
         to: "/@manage/tasks/upload",
         role: UserRole.GENERAL,
         component: lazy(() => import("./tasks/Upload")),
       },
       {
         title: "manage.sidemenu.copy",
-        icon: IoCopy,
+        icon: "mdi-content-copy",
         to: "/@manage/tasks/copy",
         role: UserRole.GENERAL,
         component: lazy(() => import("./tasks/Copy")),
       },
       {
         title: "manage.sidemenu.decompress",
-        icon: TbArchive,
+        icon: "mdi-archive-outline",
         to: "/@manage/tasks/decompress",
         role: UserRole.GENERAL,
         component: lazy(() => import("./tasks/Decompress")),
@@ -164,59 +133,45 @@ export const side_menu_items: SideMenuItem[] = [
   },
   {
     title: "manage.sidemenu.users",
-    icon: BsPersonCircle,
+    icon: "mdi-account-circle",
     to: "/@manage/users",
     component: lazy(() => import("./users/Users")),
   },
   {
     title: "manage.sidemenu.storages",
-    icon: CgDatabase,
+    icon: "mdi-database",
     to: "/@manage/storages",
     component: lazy(() => import("./storages/Storages")),
   },
   {
     title: "manage.sidemenu.metas",
-    icon: BsBoxFill,
+    icon: "mdi-package",
     to: "/@manage/metas",
     component: lazy(() => import("./metas/Metas")),
   },
   {
     title: "manage.sidemenu.indexes",
-    icon: BsSearch,
+    icon: "mdi-magnify",
     to: "/@manage/indexes",
     component: lazy(() => import("./indexes/indexes")),
   },
   {
     title: "manage.sidemenu.backup-restore",
     to: "/@manage/backup-restore",
-    icon: FaSolidDatabase,
+    icon: "mdi-database-cog",
     component: lazy(() => import("./backup-restore")),
   },
   {
-    title: "manage.sidemenu.about",
-    icon: BsFront,
-    to: "/@manage/tasks",
-    role: UserRole.GENERAL,
-    children: [
-      {
-        title: "manage.sidemenu.about",
-        icon: BsFront,
-        to: "/@manage/about",
-        role: UserRole.GUEST,
-        component: lazy(() => import("./About")),
-      },
-      {
-        title: "manage.sidemenu.docs",
-        icon: FaSolidBook,
-        to: "https://github.com/NodeSeekDev/nlist-docs/tree/main/docs",
-        role: UserRole.GUEST,
-        external: true,
-      },
-    ],
+    title: "manage.sidemenu.profile",
+    icon: "mdi-account",
+    to: "/@manage/profile",
+    role: UserRole.GUEST,
+    component: lazy(() => import("./users/Profile")),
   },
+
   {
     title: "manage.sidemenu.home",
-    icon: IoHome,
+    icon: "mdi-home",
     to: "/",
     role: UserRole.GUEST,
     refresh: true,

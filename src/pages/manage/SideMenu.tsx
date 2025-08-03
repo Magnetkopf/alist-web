@@ -1,19 +1,17 @@
-import { Box, Flex, Heading, HStack, Icon, VStack } from "@hope-ui/solid"
+import { Box, Flex, Heading, HStack, VStack } from "@hope-ui/solid"
 import { createMemo, createSignal, For, Match, Show, Switch } from "solid-js"
 import { useRouter, useT } from "~/hooks"
-import { BiSolidRightArrow } from "solid-icons/bi"
 import { onClose } from "./Header"
 import { UserMethods, UserRole } from "~/types"
 import { me } from "~/store"
 import { AnchorWithBase } from "~/components"
 import { Link } from "@solidjs/router"
 import { hoverColor, joinBase } from "~/utils"
-import { IconTypes } from "solid-icons"
 
 export interface SideMenuItemProps {
   title: string
   to: string
-  icon?: IconTypes
+  icon?: string
   children?: SideMenuItemProps[]
   role?: number
   external?: true
@@ -50,7 +48,7 @@ const SideMenuItemWithTo = (props: SideMenuItemProps) => {
       as={Link}
       href={props.to}
       onClick={(e: any) => {
-        // to(props.to!);
+        // to(props.to!);"
         onClose()
         if (props.refresh) {
           e.stopPropagation?.()
@@ -76,7 +74,17 @@ const SideMenuItemWithTo = (props: SideMenuItemProps) => {
       external={props.external}
       // _active={{ transform: "scale(.95)", transition: "0.1s" }}
     >
-      <Show when={props.icon}>{<Icon mr="$2" as={props.icon} />}</Show>
+      <Show when={props.icon}>
+
+        <Box
+          as="i"
+          class={`mdi ${props.icon}`}
+          mr="$2"
+          fontSize="$lg"
+          d="inline-block"
+          verticalAlign="middle"
+        />
+      </Show>
       <Heading>{t(props.title)}</Heading>
     </AnchorWithBase>
   )
@@ -104,11 +112,21 @@ const SideMenuItemWithChildren = (props: SideMenuItemProps) => {
         cursor="pointer"
       >
         <HStack>
-          <Show when={props.icon}>{<Icon mr="$2" as={props.icon} />}</Show>
+          <Show when={props.icon}>
+            <Box
+              as="i"
+              class={`mdi ${props.icon}`}
+              mr="$2"
+              fontSize="$lg"
+              d="inline-block"
+              verticalAlign="middle"
+            />
+          </Show>
           <Heading>{t(props.title)}</Heading>
         </HStack>
-        <Icon
-          as={BiSolidRightArrow}
+        <Box
+          as="i"
+          class="mdi mdi-chevron-right"
           transform={open() ? "rotate(90deg)" : "none"}
           transition="transform 0.2s"
         />

@@ -41,6 +41,7 @@
     "@egjs/view360": "4.0.0-beta.7",
     "@github/webauthn-json": "^2.1.1",
     "@hope-ui/solid": "0.6.7",
+    "@mdi/font": "^7.4.47",
     "@monaco-editor/loader": "^1.4.0",
     "@motionone/solid": "^10.14.1",
     "@solid-primitives/i18n": "^1.1.0",
